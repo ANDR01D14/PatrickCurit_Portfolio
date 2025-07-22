@@ -71,13 +71,5 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // You could add form validation if you implemented a contact form
-    // const contactForm = document.querySelector('#contact-form');
-    // if (contactForm) {
-    //     contactForm.addEventListener('submit', (e) => {
-    //         e.preventDefault();
-    //         // Add validation logic here
-    //         alert('Form submitted! (Not actually sent without backend)');
-    //     });
-    // }
+  
 });
