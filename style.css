@@ -562,11 +562,66 @@ footer {
         flex-direction: column;
     }
     
+    /* This rule was inside the media query and affects all .portfolio-item img */
+    /* Moving it outside to apply consistently unless a different responsive behavior is desired */
     .portfolio-item img {
-    width: 100%; /* This is key: makes the image take 100% of its parent's width */
-    height: 200px; /* This is where the fixed height might be an issue for "auto-fit" */
-    object-fit: cover; /* This is good for covering the area without distortion, but combined with fixed height, it crops */
-    display: block;
-    transition: transform 0.3s ease;
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.3s ease;
+    }
 }
+
+/* Image Enlarger Overlay */
+.image-enlarger-overlay {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stays on top of everything */
+    z-index: 1000; /* High z-index to ensure it's on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9); /* Black background with transparency */
+    display: flex; /* Use flexbox for easy centering */
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px); /* Optional: Adds a blur effect to the background */
+    -webkit-backdrop-filter: blur(5px); /* For Safari */
+}
+
+/* Enlarged Image within the overlay */
+.enlarged-image {
+    max-width: 90%; /* Max width of the image */
+    max-height: 90%; /* Max height of the image */
+    object-fit: contain; /* Ensures the whole image is visible without cropping */
+    display: block; /* Makes sure the image behaves as a block element */
+    margin: auto; /* Centers the image if it's smaller than max-width/height */
+    border: 3px solid #fff; /* Optional: White border around the enlarged image */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7); /* Optional: Shadow for the image */
+}
+
+/* Close button for the enlarged view */
+.close-button {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #fff; /* White color for the 'X' */
+    font-size: 50px; /* Large font size for visibility */
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+    z-index: 1001; /* Ensure the close button is on top of the image */
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #bbb; /* Lighter color on hover/focus */
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Make portfolio images clickable */
+.portfolio-item img {
+    cursor: pointer; /* Change cursor to pointer to indicate clickability */
 }
